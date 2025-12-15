@@ -1,23 +1,17 @@
 pipeline {
-    agent {
-        docker { 
-            image 'python:3.9-slim' 
-            // This runs the pipeline inside a Linux container with Python pre-installed
-        }
-    }
+    agent any    // <‑‑ run on the Jenkins node itself
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building the application...'
-                // Now this command works because we are inside the python container!
-                sh 'python --version' 
+                sh 'python3 --version || python --version'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing the application...'
-                sh 'python test_calc.py'
+                sh 'python3 test_calc.py || python test_calc.py'
             }
         }
         stage('Deploy') {
