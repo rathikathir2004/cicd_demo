@@ -74,7 +74,7 @@ pipeline {
                     cp test_calc.py "$DEPLOY_DIR"/
 
                     # Simulate possible deploy failure (uncomment later to test rollback)
-                    # exit 1
+                     exit 1
                 '''
             }
             post {
